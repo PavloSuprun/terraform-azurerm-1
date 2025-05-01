@@ -1,0 +1,18 @@
+[Unit]
+Description=Apache Tomcat 8
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+Environment=CATALINA_PID=/opt/tomcat8/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat8
+Environment=CATALINA_BASE=/opt/tomcat8
+ExecStart=/opt/tomcat8/bin/startup.sh
+ExecStop=/opt/tomcat8/bin/shutdown.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
