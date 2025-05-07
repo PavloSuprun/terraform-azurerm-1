@@ -1,0 +1,12 @@
+storage_account_name           = "tfstatetodoapp12345"
+location                       = "westeurope"
+resource_group_name            = "terraform-task"
+allowed_source_ips             = ["91.246.5.228/32"] # for NSG in CIDR format
+allowed_ip_range_start         = "91.246.5.228"      # for SQL Firewall
+allowed_ip_range_end           = "91.246.5.228"      # for SQL Firewall
+vm_admin_username              = "pavsupr"
+sql_admin_username             = "pavsupr"
+admin_ssh_public_key           = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjAeQSbiGY+862PoungYdM7p0hvPEUWADk4Pox9UIf4gJ0Z3D5YTwjgLeAwXdCMl89mIyvRvRfyXFSsamKfzZkHsD0umahWJqFCU8lTZTlRkSgYCaIH4cBHhJPGDCCTHZC7hDh/dqUvFmfgPzSaUDGm6yvZUKUOspTQ/OwPU3WsFJQRWM6t7PqEBgmR4/nIh5uxzL/R5c0INDwZCTgr+yHnx12En36cVMOgHMxC7KQTKHibbupo0tb8bveOMfZ3u96I/fv3k5/PzUOysPsxaF+d/jFgGEpYmf8HR/4hsOb9m1hGNw8YvZ/8B5v5Hi7b8H+sXAbctTOvq2hbe0emoeH"
+key_vault_name                 = "pavsupr-kv"
+key_vault_rg                   = "key-vault"
+domain_name                    = "myazurewebapp.pp.ua"
