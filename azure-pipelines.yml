@@ -5,21 +5,38 @@ pool:
   name: 'Default'
 
 steps:
-
-- script: terraform --version
-  displayName: 'Verify Terraform CLI'
-
-- script: az --version
-  displayName: 'Verify Azure CLI'
-
 - script: terraform init
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Terraform Init'
+  env:
+    TF_VAR_subscription_id:                 $(TF_VAR_subscription_id)
+    TF_VAR_tenant_id:                       $(TF_VAR_tenant_id)
+    TF_VAR_client_id:                       $(TF_VAR_client_id)
+    TF_VAR_client_secret:                   $(TF_VAR_client_secret)
+    TF_VAR_sql_admin_password_secret_name:  $(TF_VAR_sql_admin_password_secret_name)
+    TF_VAR_vm_ssh_private_key_secret_name:  $(TF_VAR_vm_ssh_private_key_secret_name)
+    TF_VAR_ssl_certificate_secret_name:     $(TF_VAR_ssl_certificate_secret_name)
 
-- script: terraform plan -var-file="C:\\agents\\secrets\\terraform.tfvars" -out=tfplan
+- script: terraform plan -out=tfplan
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Terraform Plan'
+  env:
+    TF_VAR_subscription_id:                 $(TF_VAR_subscription_id)
+    TF_VAR_tenant_id:                       $(TF_VAR_tenant_id)
+    TF_VAR_client_id:                       $(TF_VAR_client_id)
+    TF_VAR_client_secret:                   $(TF_VAR_client_secret)
+    TF_VAR_sql_admin_password_secret_name:  $(TF_VAR_sql_admin_password_secret_name)
+    TF_VAR_vm_ssh_private_key_secret_name:  $(TF_VAR_vm_ssh_private_key_secret_name)
+    TF_VAR_ssl_certificate_secret_name:     $(TF_VAR_ssl_certificate_secret_name)
 
 - script: terraform apply -auto-approve tfplan
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Terraform Apply'
+  env:
+    TF_VAR_subscription_id:                 $(TF_VAR_subscription_id)
+    TF_VAR_tenant_id:                       $(TF_VAR_tenant_id)
+    TF_VAR_client_id:                       $(TF_VAR_client_id)
+    TF_VAR_client_secret:                   $(TF_VAR_client_secret)
+    TF_VAR_sql_admin_password_secret_name:  $(TF_VAR_sql_admin_password_secret_name)
+    TF_VAR_vm_ssh_private_key_secret_name:  $(TF_VAR_vm_ssh_private_key_secret_name)
+    TF_VAR_ssl_certificate_secret_name:     $(TF_VAR_ssl_certificate_secret_name)
