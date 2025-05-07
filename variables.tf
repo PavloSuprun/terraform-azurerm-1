@@ -2,6 +2,24 @@ variable "subscription_id" {
   type = string
 }
 
+variable "tenant_id" {
+  type = string
+}
+
+variable "client_id" {
+  type = string
+  description = "Service Principal Client ID"
+}
+
+variable "client_secret" {
+  type = string
+  description = "Service Principal Client Secret"
+}
+
+variable "storage_account_name" {
+  type = string
+}
+
 variable "location" {
   type = string
 }

@@ -1,20 +1,20 @@
 data "azurerm_key_vault" "this" {
-  name                = "pavsupr-kv"
-  resource_group_name = "key-vault"
+  name                = var.key_vault_name
+  resource_group_name = var.key_vault_rg
 }
 
 data "azurerm_key_vault_secret" "sql_admin_password" {
-  name         = "sql-admin-password"
+  name         = var.sql_admin_password_secret_name
   key_vault_id = data.azurerm_key_vault.this.id
 }
 
 data "azurerm_key_vault_secret" "vm_ssh_private_key" {
-  name         = "vm-ssh-private-key"
+  name         = var.vm_ssh_private_key_secret_name
   key_vault_id = data.azurerm_key_vault.this.id
 }
 
 data "azurerm_key_vault_certificate" "ssl_certificate" {
-  name         = "my-azure-web-app-cert"
+  name         = var.ssl_certificate_secret_name
   key_vault_id = data.azurerm_key_vault.this.id
 }
 

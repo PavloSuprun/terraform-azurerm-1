@@ -65,5 +65,5 @@ resource "azurerm_dns_a_record" "main" {
   zone_name           = azurerm_dns_zone.this.name
   resource_group_name = var.resource_group_name
   ttl                 = 300
-  records             = [azurerm_public_ip.vmss_lb.id]
+  records             = [azurerm_public_ip.vmss_lb.ip_address]
 }
