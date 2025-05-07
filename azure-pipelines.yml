@@ -1,0 +1,25 @@
+trigger:
+- main
+
+pool:
+  name: 'Default'
+
+steps:
+
+- script: terraform --version
+  displayName: 'Verify Terraform CLI'
+
+- script: az --version
+  displayName: 'Verify Azure CLI'
+
+- script: terraform init
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Terraform Init'
+
+- script: terraform plan -var-file="C:\\agents\\secrets\\terraform.tfvars" -out=tfplan
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Terraform Plan'
+
+- script: terraform apply -auto-approve tfplan
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Terraform Apply'
