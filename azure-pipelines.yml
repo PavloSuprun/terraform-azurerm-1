@@ -4,13 +4,17 @@ trigger:
 pool:
   name: 'Default'
 
+variables:
+  - name: subscription_id
+    value: $(subscription_id)
+  - name: client_id
+    value: $(client_id)
+  - name: client_secret
+    value: $(client_secret)
+  - name: tenant_id
+    value: $(tenant_id)
+
 steps:
-
-- script: terraform --version
-  displayName: 'Verify Terraform CLI'
-
-- script: az --version
-  displayName: 'Verify Azure CLI'
 
 - script: terraform init
   workingDirectory: '$(Build.SourcesDirectory)'
